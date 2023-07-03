@@ -9,6 +9,9 @@ Currently tgenv supports the following OSes
 - Mac OS X (64bit)
 - Linux (64bit)
 
+## Prerequisites
+- [jq](https://pkgs.alpinelinux.org/package/edge/main/x86/jq)
+
 ## Installation
 
 1. Check out tgenv into any path (here is `${HOME}/.tgenv`)
