@@ -95,8 +95,10 @@ retry -tries 5 -sleep 5 -stop-on-exit-code 2 install_tg_version || error_and_die
 install_exist_code=$?
 
 if [ "$install_exist_code" -eq 0 ]; then
-
-  chmod +x "${dst_path}/terragrunt" || error_and_die "Change rights failed"
+  # Check if the file is not executable and if it isn't, make it executable
+  if [ ! -x "${dst_path}/terragrunt" ]; then
+    chmod +x "${dst_path}/terragrunt" || error_and_die "Change rights failed"
+  fi
 
   info "Installation of terragrunt v${version} successful"
   retry -sleep 3 tgenv-use "${version}" || error_and_die "tgenv use failed"
